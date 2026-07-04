@@ -142,6 +142,8 @@ function ContactFormContent() {
   const initialSubject = searchParams.get("subject") || "";
   const [subject, setSubject] = useState(initialSubject);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   if (isSubmitted) {
     return (
@@ -176,9 +178,6 @@ function ContactFormContent() {
       </AnimatePresence>
     );
   }
-
-  const [isSending, setIsSending] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

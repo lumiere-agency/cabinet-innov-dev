@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const targetEmail = toEmail || process.env.CONTACT_EMAIL || 'contact@innovdev-senegal.com';
     const mailSubject = subject || `Nouveau message de ${name} depuis le site INNOV'DEV`;
 
-    const data = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'INNOV DEV <onboarding@resend.dev>', // You should verify a domain in Resend for production
       to: [targetEmail],
       subject: mailSubject,
@@ -33,6 +33,11 @@ export async function POST(request: Request) {
         <p style="white-space: pre-wrap;">${message}</p>
       `,
     });
+
+    if (error) {
+      console.error('Erreur API Resend:', error);
+      return NextResponse.json({ error: error.message }, { status: 400 });
+    }
 
     return NextResponse.json({ success: true, data });
   } catch (error) {
