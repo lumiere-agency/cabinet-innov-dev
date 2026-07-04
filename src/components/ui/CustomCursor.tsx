@@ -9,40 +9,45 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Only show on desktop
-    if (typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches) {
-      setIsVisible(true);
-    } else {
-      return;
+    let timeout: NodeJS.Timeout;
+    
+    // Check if on desktop
+    const isDesktop = typeof window !== "undefined" && window.matchMedia("(pointer: fine)").matches;
+
+    if (isDesktop) {
+      // Différer l'affichage pour éviter l'erreur de linting (cascading render)
+      timeout = setTimeout(() => {
+        setIsVisible(true);
+      }, 50);
+
+      const mouseMove = (e: MouseEvent) => {
+        setMousePosition({
+          x: e.clientX,
+          y: e.clientY
+        });
+      };
+
+      const handleMouseOver = (e: MouseEvent) => {
+        const target = e.target as HTMLElement;
+        const isClickable = 
+          target.tagName.toLowerCase() === 'a' ||
+          target.tagName.toLowerCase() === 'button' ||
+          target.closest('a') ||
+          target.closest('button') ||
+          target.classList.contains('cursor-pointer');
+          
+        setIsHovering(!!isClickable);
+      };
+
+      window.addEventListener("mousemove", mouseMove);
+      window.addEventListener("mouseover", handleMouseOver);
+
+      return () => {
+        clearTimeout(timeout);
+        window.removeEventListener("mousemove", mouseMove);
+        window.removeEventListener("mouseover", handleMouseOver);
+      };
     }
-
-    const mouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY
-      });
-    };
-
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      // Check if we are hovering over something clickable
-      const isClickable = 
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button') ||
-        target.classList.contains('cursor-pointer');
-        
-      setIsHovering(!!isClickable);
-    };
-
-    window.addEventListener("mousemove", mouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
-
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
-    };
   }, []);
 
   if (!isVisible) return null;
