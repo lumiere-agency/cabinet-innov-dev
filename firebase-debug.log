@@ -1,0 +1,110 @@
+[debug] [2026-07-03T01:18:53.681Z] ----------------------------------------------------------------------
+[debug] [2026-07-03T01:18:53.687Z] Command:       /usr/local/bin/node /Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/.bin/firebase deploy --only firestore --project site-innovdev
+[debug] [2026-07-03T01:18:53.688Z] CLI Version:   15.22.4
+[debug] [2026-07-03T01:18:53.688Z] Platform:      darwin
+[debug] [2026-07-03T01:18:53.688Z] Node Version:  v22.14.0
+[debug] [2026-07-03T01:18:53.688Z] Detected Agent: antigravity
+[debug] [2026-07-03T01:18:53.689Z] Time:          Fri Jul 03 2026 01:18:53 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-07-03T01:18:53.689Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-03T01:18:56.627Z] Error: Cannot find module '/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/@grpc/grpc-js/build/src/index.js'. Please verify that the package.json has a valid "main" entry
+    at tryPackage (node:internal/modules/cjs/loader:493:19)
+    at Function._findPath (node:internal/modules/cjs/loader:775:18)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1211:27)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/google-gax/build/src/index.js:53:27)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-03T01:21:09.818Z] ----------------------------------------------------------------------
+[debug] [2026-07-03T01:21:09.825Z] Command:       /usr/local/bin/node /Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/.bin/firebase deploy --only firestore --project site-innovdev
+[debug] [2026-07-03T01:21:09.829Z] CLI Version:   15.22.4
+[debug] [2026-07-03T01:21:09.829Z] Platform:      darwin
+[debug] [2026-07-03T01:21:09.830Z] Node Version:  v22.14.0
+[debug] [2026-07-03T01:21:09.830Z] Detected Agent: antigravity
+[debug] [2026-07-03T01:21:09.830Z] Time:          Fri Jul 03 2026 01:21:09 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-07-03T01:21:09.831Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-03T01:21:13.042Z] Error: Cannot find module '/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/@grpc/grpc-js/build/src/index.js'. Please verify that the package.json has a valid "main" entry
+    at tryPackage (node:internal/modules/cjs/loader:493:19)
+    at Function._findPath (node:internal/modules/cjs/loader:775:18)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1211:27)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/google-gax/build/src/index.js:53:27)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-03T01:23:15.936Z] ----------------------------------------------------------------------
+[debug] [2026-07-03T01:23:15.942Z] Command:       /usr/local/bin/node /Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/.bin/firebase deploy --only firestore --project site-innovdev
+[debug] [2026-07-03T01:23:15.943Z] CLI Version:   15.22.4
+[debug] [2026-07-03T01:23:15.943Z] Platform:      darwin
+[debug] [2026-07-03T01:23:15.943Z] Node Version:  v22.14.0
+[debug] [2026-07-03T01:23:15.944Z] Detected Agent: antigravity
+[debug] [2026-07-03T01:23:15.944Z] Time:          Fri Jul 03 2026 01:23:15 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-07-03T01:23:15.944Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-03T01:23:18.737Z] Error: Cannot find module '/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/@grpc/grpc-js/build/src/index.js'. Please verify that the package.json has a valid "main" entry
+    at tryPackage (node:internal/modules/cjs/loader:493:19)
+    at Function._findPath (node:internal/modules/cjs/loader:775:18)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1211:27)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/google-gax/build/src/index.js:53:27)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-03T01:25:23.013Z] ----------------------------------------------------------------------
+[debug] [2026-07-03T01:25:23.017Z] Command:       /usr/local/bin/node /Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/.bin/firebase deploy --only firestore --project site-innovdev
+[debug] [2026-07-03T01:25:23.018Z] CLI Version:   15.22.4
+[debug] [2026-07-03T01:25:23.018Z] Platform:      darwin
+[debug] [2026-07-03T01:25:23.018Z] Node Version:  v22.14.0
+[debug] [2026-07-03T01:25:23.019Z] Detected Agent: antigravity
+[debug] [2026-07-03T01:25:23.019Z] Time:          Fri Jul 03 2026 01:25:23 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-07-03T01:25:23.019Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-03T01:25:26.090Z] Error: Cannot find module '/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/@grpc/grpc-js/build/src/index.js'. Please verify that the package.json has a valid "main" entry
+    at tryPackage (node:internal/modules/cjs/loader:493:19)
+    at Function._findPath (node:internal/modules/cjs/loader:775:18)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1211:27)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/google-gax/build/src/index.js:53:27)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-03T01:30:34.980Z] ----------------------------------------------------------------------
+[debug] [2026-07-03T01:30:34.987Z] Command:       /usr/local/bin/node /Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/.bin/firebase deploy --only firestore --project site-innovdev
+[debug] [2026-07-03T01:30:34.988Z] CLI Version:   15.22.4
+[debug] [2026-07-03T01:30:34.988Z] Platform:      darwin
+[debug] [2026-07-03T01:30:34.988Z] Node Version:  v22.14.0
+[debug] [2026-07-03T01:30:34.989Z] Detected Agent: unknown
+[debug] [2026-07-03T01:30:34.989Z] Time:          Fri Jul 03 2026 01:30:34 GMT+0000 (Greenwich Mean Time)
+[debug] [2026-07-03T01:30:34.989Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-03T01:30:38.226Z] Error: Cannot find module '/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/@grpc/grpc-js/build/src/index.js'. Please verify that the package.json has a valid "main" entry
+    at tryPackage (node:internal/modules/cjs/loader:493:19)
+    at Function._findPath (node:internal/modules/cjs/loader:775:18)
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1211:27)
+    at Function._load (node:internal/modules/cjs/loader:1055:27)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:220:24)
+    at Module.require (node:internal/modules/cjs/loader:1311:12)
+    at require (node:internal/modules/helpers:136:16)
+    at Object.<anonymous> (/Users/duudu/.npm/_npx/7750544ccf494d8b/node_modules/google-gax/build/src/index.js:53:27)
+    at Module._compile (node:internal/modules/cjs/loader:1554:14)
+[error] 
+[error] Error: An unexpected error has occurred.
