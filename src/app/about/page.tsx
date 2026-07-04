@@ -22,8 +22,8 @@ export default function AboutPage() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-poppins font-bold text-foreground leading-tight mb-6">
               L'excellence au service du <span className="text-primary">développement territorial</span>.
             </h1>
-            <p className="text-lg text-muted-foreground font-inter">
-              Le Cabinet INNOV'DEV est né d'une volonté forte : apporter des solutions stratégiques, innovantes et adaptées aux réalités africaines pour accélérer le développement local et institutionnel.
+            <p className="text-slate-600 text-lg leading-relaxed font-medium mb-6">
+              Le Cabinet INNOV'DEV est né d'une volonté forte : apporter des solutions stratégiques, innovantes et adaptées aux réalités sénégalaises pour accélérer le développement local et institutionnel.
             </p>
           </motion.div>
           <motion.div

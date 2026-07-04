@@ -59,7 +59,7 @@ const allServices = [
   {
     title: "Entrepreneuriat et recherche intellectuelle",
     slug: "autre",
-    description: "Soutien aux initiatives entrepreneuriales innovantes et production d'études prospectives sur les enjeux de développement africain.",
+    description: "Soutien aux initiatives entrepreneuriales innovantes et production d'études prospectives sur les enjeux de développement sénégalais.",
     icon: <Lightbulb className="w-10 h-10 text-accent" />,
     color: "bg-accent/10 border-accent/20",
   },
