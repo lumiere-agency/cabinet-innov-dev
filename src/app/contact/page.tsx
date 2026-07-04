@@ -208,7 +208,8 @@ function ContactFormContent() {
       }
 
       setIsSubmitted(true);
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       setErrorMsg("Une erreur est survenue lors de l'envoi du message.");
     } finally {
       setIsSending(false);
@@ -272,8 +273,10 @@ function ContactFormContent() {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="pt-4">
-            <Button type="submit" variant="default" size="lg" className="w-full h-14 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 group/btn text-base font-bold">
-              Envoyer la demande <Send className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all duration-300" />
+            <Button disabled={isSending} type="submit" variant="default" size="lg" className="w-full h-14 rounded-2xl shadow-xl shadow-primary/20 hover:shadow-primary/40 group/btn text-base font-bold">
+              {isSending ? "Envoi en cours..." : (
+                <>Envoyer la demande <Send className="w-5 h-5 ml-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-all duration-300" /></>
+              )}
             </Button>
           </motion.div>
         </motion.div>

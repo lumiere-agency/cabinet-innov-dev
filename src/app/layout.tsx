@@ -25,6 +25,29 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Cabinet INNOV'DEV | Développement Territorial",
   description: "Des solutions stratégiques pour un développement territorial durable au Sénégal.",
+  keywords: ["développement territorial", "cabinet de conseil", "Sénégal", "innovation sociale", "développement local", "ONG", "secteur public"],
+  openGraph: {
+    title: "Cabinet INNOV'DEV | Stratégies & Développement",
+    description: "Des solutions stratégiques pour un développement territorial durable au Sénégal.",
+    url: "https://cabinet-innov-dev.vercel.app",
+    siteName: "Cabinet INNOV'DEV",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "Logo du Cabinet INNOV'DEV",
+      },
+    ],
+    locale: "fr_FR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cabinet INNOV'DEV",
+    description: "Des solutions stratégiques pour un développement territorial durable au Sénégal.",
+    images: ["/logo.png"],
+  },
 };
 
 export default function RootLayout({

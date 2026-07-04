@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -49,7 +50,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group">
           <div className="bg-white p-1 rounded-xl shadow-md border border-slate-100/50 flex items-center justify-center h-12 w-12 group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300 overflow-hidden">
-            <img src="/logo.png" alt="INNOV'DEV Cabinet" className="h-full w-full object-contain" />
+            <Image src="/logo.png" alt="INNOV'DEV Cabinet" width={48} height={48} className="h-full w-full object-contain" />
           </div>
           <div className="flex flex-col">
             <span className={`font-poppins font-bold text-xl leading-none tracking-tight transition-colors duration-300 ${isLightText ? "text-white" : "text-foreground"}`}>INNOV'DEV</span>
