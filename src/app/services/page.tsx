@@ -90,18 +90,24 @@ export default function ServicesPage() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
-          {allServices.map((service, i) => (
+        {/* Bento Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
+          {allServices.map((service, i) => {
+            // Bento logic: Items 0 and 3 take 2 columns on large screens
+            const isWide = i === 0 || i === 3 || i === 6;
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: i * 0.05 }}
-              className="h-full"
+              className={`h-full ${isWide ? "lg:col-span-2" : "col-span-1"}`}
             >
-              <Card className="h-full bg-card/50 backdrop-blur-md border border-border/60 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/5 group flex flex-col rounded-3xl">
+              <Card className="h-full bg-card/40 backdrop-blur-xl border border-white/10 hover:border-primary/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(30,125,77,0.1)] group flex flex-col rounded-3xl overflow-hidden relative">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
                 <CardHeader className="p-6 pb-4">
                   <div className={`w-14 h-14 rounded-2xl ${service.color} border flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}>
                     {service.icon}
@@ -120,7 +126,8 @@ export default function ServicesPage() {
                 </CardContent>
               </Card>
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

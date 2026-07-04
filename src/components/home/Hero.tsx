@@ -8,54 +8,115 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background with overlay */}
-      <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url("/images/hero-bg.jpg")' }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F4C81]/90 to-[#1E7D4D]/80 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-black/40" />
+      {/* Dynamic Background with CSS Gradient Mesh */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#0A1A2F]">
+        <div 
+          className="absolute inset-0 z-10 bg-cover bg-center bg-no-repeat opacity-20 mix-blend-overlay"
+          style={{ backgroundImage: 'url("/images/hero-bg.jpg")' }}
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3],
+            rotate: [0, 45, 0]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -top-[20%] -left-[10%] w-[70%] h-[70%] rounded-full bg-[#1E7D4D]/40 blur-[120px] z-0"
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.5, 1],
+            opacity: [0.2, 0.5, 0.2],
+            x: [0, 100, 0],
+            y: [0, -50, 0]
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-[#0F4C81]/50 blur-[100px] z-0"
+        />
+        <div className="absolute inset-0 bg-black/30 z-10" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 md:px-6 text-white text-center md:text-left flex flex-col items-center md:items-start pt-10 pb-16 md:pb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl"
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
+      <div className="container relative z-20 mx-auto px-4 md:px-6 text-white text-center md:text-left flex flex-col items-center md:items-start pt-10 pb-16 md:pb-24">
+        <div className="max-w-4xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6"
+          >
             <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
             <span className="text-xs font-semibold tracking-wider uppercase">Cabinet d'Expertise Territorial</span>
-          </div>
+          </motion.div>
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold leading-tight mb-6">
-            Des solutions stratégiques pour un <span className="text-accent">développement durable</span>.
-          </h1>
+          <motion.h1 
+            className="text-4xl md:text-6xl lg:text-7xl font-poppins font-bold leading-tight mb-6"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 }
+              }
+            }}
+          >
+            {"Des solutions stratégiques pour un ".split(" ").map((word, i) => (
+              <motion.span 
+                key={i} 
+                className="inline-block mr-[0.25em]"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+            <motion.span 
+              className="text-accent inline-block"
+              variants={{
+                hidden: { opacity: 0, y: 20, scale: 0.9 },
+                visible: { opacity: 1, y: 0, scale: 1 }
+              }}
+              transition={{ type: "spring", stiffness: 200, damping: 10 }}
+            >
+              développement durable.
+            </motion.span>
+          </motion.h1>
           
-          <p className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 font-inter leading-relaxed">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-lg md:text-xl text-white/80 max-w-2xl mb-10 font-inter leading-relaxed"
+          >
             Nous accompagnons les ONG, institutions publiques et entreprises dans leurs projets de développement territorial au Sénégal grâce à notre expertise terrain et nos outils innovants.
-          </p>
+          </motion.p>
           
-          <div className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start">
-            <Button asChild variant="accent" size="lg" className="shadow-lg">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1 }}
+            className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start"
+          >
+            <Button asChild variant="accent" size="lg" className="shadow-lg hover:shadow-accent/50 transition-shadow">
               <Link href="/contact">
                 Demander un accompagnement
               </Link>
             </Button>
-            <Button asChild variant="glass" size="lg" className="border-white/25">
+            <Button asChild variant="glass" size="lg" className="border-white/25 hover:bg-white/10 transition-colors">
               <Link href="/services">
                 Découvrir nos services <ArrowRight className="ml-2 h-4 w-4 group-hover/button:translate-x-1 transition-transform" />
               </Link>
             </Button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
         {/* Stats Section / Features preview below Hero text */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mt-20 w-full"
         >
           {[
@@ -64,10 +125,11 @@ export default function Hero() {
             { icon: <Target className="text-[#1E7D4D] h-6 w-6" />, val: "3+", label: "Projets en cours" },
             { icon: <BarChart3 className="text-[#EAB308] h-6 w-6" />, val: "100%", label: "Orienté Données" },
           ].map((stat, i) => (
-            <div key={i} className="group flex flex-col items-center md:items-start bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/25 transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-black/10 cursor-pointer">
-              <div className="mb-4 bg-white/10 p-3 rounded-xl inline-flex group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300">{stat.icon}</div>
-              <h3 className="text-3xl font-bold font-poppins text-white mb-1">{stat.val}</h3>
-              <p className="text-sm text-white/70 font-medium">{stat.label}</p>
+            <div key={i} className="relative group flex flex-col items-center md:items-start bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="mb-4 bg-white/10 p-3 rounded-xl inline-flex group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300 relative z-10">{stat.icon}</div>
+              <h3 className="text-3xl font-bold font-poppins text-white mb-1 relative z-10">{stat.val}</h3>
+              <p className="text-sm text-white/70 font-medium relative z-10">{stat.label}</p>
             </div>
           ))}
         </motion.div>

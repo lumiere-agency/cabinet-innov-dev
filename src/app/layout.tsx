@@ -3,6 +3,7 @@ import { Poppins, Inter, Manrope } from "next/font/google";
 import LayoutWrapper from "@/components/layout/LayoutWrapper";
 import { AuthProvider } from "@/lib/AuthContext";
 import { ToastProvider } from "@/components/ui/Toast";
+import CustomCursor from "@/components/ui/CustomCursor";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import "./globals.css";
 
@@ -64,6 +65,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col font-sans bg-background text-foreground selection:bg-primary/30 selection:text-primary overflow-x-hidden">
         <AuthProvider>
           <ToastProvider>
+            <CustomCursor />
             <LayoutWrapper>
               {children}
             </LayoutWrapper>
