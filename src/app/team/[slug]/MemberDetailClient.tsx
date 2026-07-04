@@ -15,48 +15,14 @@ interface MemberDetailClientProps {
 }
 
 export default function MemberDetailClient({ member }: MemberDetailClientProps) {
-  const [contactName, setContactName] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactMessage, setContactMessage] = useState("");
-  const [formSubmitted, setFormSubmitted] = useState(false);
-
-  const [isSending, setIsSending] = useState(false);
-  const [errorMsg, setErrorMsg] = useState("");
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!contactName || !contactEmail || !contactMessage) return;
-    
-    setIsSending(true);
-    setErrorMsg("");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: contactName,
-          email: contactEmail,
-          message: contactMessage,
-          toEmail: member.email,
-          subject: `Message pour ${member.firstName} depuis le site web`,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Erreur d'envoi");
-      }
-
-      setFormSubmitted(true);
-    } catch (error) {
-      setErrorMsg("Une erreur est survenue lors de l'envoi du message.");
-    } finally {
-      setIsSending(false);
-    }
-  };
-
   const accentColor = member.accentColor || "#1E7D4D";
   const initials = member.firstName ? [member.firstName.split(' ')[0][0], member.lastName[0]].join('') : "ID";
+
+  const getWhatsAppLink = (phone: string) => {
+    // Nettoyer le numéro (enlever les espaces, tirets, etc.)
+    const cleanPhone = phone.replace(/[^0-9+]/g, '');
+    return `https://wa.me/${cleanPhone}`;
+  };
 
   return (
     <main className="bg-slate-50 min-h-screen text-slate-800 font-inter relative overflow-hidden selection:bg-primary/20">
@@ -356,66 +322,35 @@ export default function MemberDetailClient({ member }: MemberDetailClientProps) 
           </div>
           
           <div className="w-full md:w-[400px] relative z-10 bg-white rounded-[2rem] p-8 shadow-xl">
-            {formSubmitted ? (
-              <div className="text-center py-8">
-                <div className="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-secondary">
-                  <Check size={32} />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4 font-poppins">Message envoyé !</h3>
-                <p className="text-slate-600 text-sm mb-6 leading-relaxed">
-                  Merci de nous avoir contactés. Nous reviendrons vers vous très prochainement.
-                </p>
-                <button
-                  onClick={() => {
-                    setFormSubmitted(false);
-                    setContactMessage("");
-                  }}
-                  className="w-full inline-block bg-secondary text-white font-bold py-3.5 rounded-xl hover:bg-slate-900 transition-colors text-center text-sm"
+            <h3 className="text-xl font-bold text-slate-900 mb-6">Contactez-moi directement</h3>
+            <p className="text-slate-600 text-sm mb-8 leading-relaxed">
+              Choisissez le moyen qui vous convient le mieux pour me contacter.
+            </p>
+            <div className="space-y-4">
+              {member.phone && (
+                <a 
+                  href={getWhatsAppLink(member.phone)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-[#25D366] text-white font-bold py-4 rounded-xl hover:bg-[#20bd5a] transition-all hover:-translate-y-1 shadow-md shadow-[#25D366]/20 flex items-center justify-center"
                 >
-                  Envoyer un autre message
-                </button>
-              </div>
-            ) : (
-              <>
-                <h3 className="text-xl font-bold text-slate-900 mb-6">Envoyer un message</h3>
-                {errorMsg && <div className="text-red-500 text-sm mb-4">{errorMsg}</div>}
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div>
-                    <input
-                      required
-                      type="text"
-                      placeholder="Votre nom"
-                      value={contactName}
-                      onChange={(e) => setContactName(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-secondary transition-colors text-sm font-medium"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      required
-                      type="email"
-                      placeholder="Votre email"
-                      value={contactEmail}
-                      onChange={(e) => setContactEmail(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-secondary transition-colors text-sm font-medium"
-                    />
-                  </div>
-                  <div>
-                    <textarea
-                      required
-                      placeholder="Votre message..."
-                      rows={4}
-                      value={contactMessage}
-                      onChange={(e) => setContactMessage(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-secondary transition-colors text-sm font-medium resize-none"
-                    ></textarea>
-                  </div>
-                  <button type="submit" disabled={isSending} className="w-full bg-secondary text-white font-bold py-3.5 rounded-xl hover:bg-slate-900 transition-colors disabled:opacity-50 flex items-center justify-center">
-                    {isSending ? "Envoi en cours..." : <>Envoyer <ArrowRight size={16} className="inline ml-2" /></>}
-                  </button>
-                </form>
-              </>
-            )}
+                  <Phone size={20} className="mr-3" /> Discuter sur WhatsApp
+                </a>
+              )}
+              {member.email && (
+                <a 
+                  href={`mailto:${member.email}`}
+                  className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-all hover:-translate-y-1 shadow-md flex items-center justify-center"
+                >
+                  <Mail size={20} className="mr-3" /> M'envoyer un Email
+                </a>
+              )}
+              {!member.phone && !member.email && (
+                <div className="text-center text-slate-500 text-sm py-4 border border-slate-200 rounded-xl bg-slate-50">
+                  Aucun contact direct disponible
+                </div>
+              )}
+            </div>
           </div>
           
         </div>
